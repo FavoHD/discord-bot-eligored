@@ -40,10 +40,6 @@ client.once('disconnect', () => {
 });
 
 
-client.on('guildMemberAdd', member => {
-  	member.addRole('guest');
-}
-
 client.on('message', async message => {
 	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
