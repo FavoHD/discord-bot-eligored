@@ -77,14 +77,22 @@ function help(message, connection) {
 }
 
 function listUsers(message, connection) {
-	var string = "Userlist: ";
-
-	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
-		results.forEach(user => {
-			string += "\n"+user.name+" - "+user.email;
+	var embed = new Discord.MessageEmbed()
+		.setColor('#00c600')
+		.setTitle('Userlist')
+		.setAuthor('Eligored', client.user.avatarURL)
+		.addFields(
+			{ name: 'Userlist', value: 'Lists  all registered users' },
+			{ name: '\u200B', value: '\u200B' },
+		)
+		connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
+			results.forEach(user => {
+				embed.addField(`${user.name}`, `${user.email}`)
+			});
+			message.channel.send(string);
 		});
-		message.channel.send(string);
-	});
+		.setTimestamp()
+		.setFooter(message.author.username, message.author.displayAvatarURL);
 }
 
 client.login(token);
