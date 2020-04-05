@@ -44,14 +44,26 @@ client.on('message', async message => {
 	if (!message.content.startsWith(prefix)) return;
 
 	if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
-		message.channel.send('Pong!')
+		message.channel.send('Pong!');
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
 
+		return;
+	} else if (message.content.toLowerCase().startsWith(`${prefix}listUsers`)) {
+		listUsers;
 		return;
 	} else {
 		message.channel.send('You need to enter a valid command!')
 	}
 });
+
+function listUsers() {
+	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
+		forEach((result) => {
+			console.console.log(result);
+		});
+
+	});
+}
 
 client.login(token);
