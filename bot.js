@@ -28,14 +28,7 @@ connection.connect(function(err) {
 
 
 client.once('ready', () => {
-	client.user.setStatus('online')
-    client.user.setPresence({
-        game: {
-            name: `${prefix}help`,
-            type: "Playing",
-            url: "https://discordapp.com/"
-        }
-    });
+	client.user.setActivity(`${prefix}help`, {type: "playing"}); 
 
 	console.log('Ready!');
 });
