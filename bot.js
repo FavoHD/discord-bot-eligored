@@ -17,11 +17,11 @@ var connection = mysql.createConnection({
 
 connection.connect(function(err) {
   	if (err) {
-    	console.error('error connecting to db: ' + err.stack);
+    	console.error('Error while connecting to database: ' + err.stack);
     	return;
   	}
 
-  	console.log('connected to db as id ' + connection.threadId);
+  	console.log('Successfully connected to database as ' + connection.threadId);
 });
 //Database
 
