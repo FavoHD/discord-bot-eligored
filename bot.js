@@ -7,23 +7,22 @@ const ownerId = process.env.ownerId;
 
 
 //Database
-const {Pool} = require('pg');
- 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: true,
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'v12018035925062710.yourpserver.net',
+  user     : 'db_schulprj_user',
+  password : '20fj%iQ7',
+  database : 'DB_SchulPrj'
 });
 
-pool.connect();
-	
-pool.on('connect', () => console.log('Connected to db!'));
+connection.connect();
 //Database
 
 
 
-client.once('ready', () => {	
+client.once('ready', () => {
 	client.user.setPresence({ game: { name: prefix+'help' }, status: 'online' })
-	
+
 	console.log('Ready!');
 });
 client.once('reconnecting', () => {
@@ -36,12 +35,12 @@ client.once('disconnect', () => {
 client.on('message', async message => {
 	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
-	
+
 	if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
 		message.channel.send('Pong!')
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-		
+
 		return;
 	} else {
 		message.channel.send('You need to enter a valid command!')
