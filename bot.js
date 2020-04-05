@@ -50,17 +50,17 @@ client.on('message', async message => {
 
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}listUsers`)) {
-		listUsers;
+		listUsers(message);
 		return;
 	} else {
 		message.channel.send('You need to enter a valid command!')
 	}
 });
 
-function listUsers() {
+function listUsers(message) {
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		forEach((result) => {
-			console.log(result);
+			message.channel.send(result);
 		});
 
 	});
