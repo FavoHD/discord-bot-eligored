@@ -79,7 +79,7 @@ function help(message, connection) {
 			{ name: `${prefix}list`, value: 'List all registered users', inline: true },
 		)
 		.setTimestamp()
-		.setFooter(`${client.users.get(message.author.id).username}`, message.author.displayAvatarURL);
+		.setFooter(message.author.username, message.author.displayAvatarURL);
 
 	message.channel.send(embed);
 }
