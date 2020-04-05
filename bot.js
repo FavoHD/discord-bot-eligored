@@ -62,7 +62,7 @@ function help(message, connection) {
 }
 
 function listUsers(message, connection) {
-	var string = "Userlist";
+	var string = "Userlist: ";
 
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		results.forEach(user => {
