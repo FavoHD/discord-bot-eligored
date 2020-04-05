@@ -58,7 +58,20 @@ client.on('message', async message => {
 });
 
 function help(message, connection) {
-	message.channel.send("Help");
+	var embed = new Discord.MessageEmbed()
+		.setColor('#00c600')
+		.setTitle('Help')
+		.setAuthor('Eligored', client.user.avatarURL)
+		.setDescription('Some description here')
+		.addFields(
+			{ name: `Help`, value: 'List of all bot commands' },
+			{ name: '\u200B', value: '\u200B' },
+			{ name: `${prefix}help`, value: 'List all commands', inline: true },
+		)
+		.setTimestamp()
+		.setFooter(`${client.users.get(message.author.id).username}`, message.author.displayAvatarURL);
+
+	message.channel.send(embed);
 }
 
 function listUsers(message, connection) {
