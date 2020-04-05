@@ -9,19 +9,19 @@ const ownerId = process.env.ownerId;
 //Database
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host     : 'v12018035925062710.yourpserver.net',
-  user     : 'db_schulprj_user',
-  password : '20fj%iQ7',
-  database : 'DB_SchulPrj'
+  	host     : 'v12018035925062710.yourpserver.net',
+  	user     : 'db_schulprj_user',
+  	password : '20fj%iQ7',
+  	database : 'DB_SchulPrj'
 });
 
 connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting to db: ' + err.stack);
-    return;
-  }
+  	if (err) {
+    	console.error('error connecting to db: ' + err.stack);
+    	return;
+  	}
 
-  console.log('connected to db as id ' + connection.threadId);
+  	console.log('connected to db as id ' + connection.threadId);
 });
 //Database
 
