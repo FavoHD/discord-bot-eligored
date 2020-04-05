@@ -28,7 +28,7 @@ connection.connect(function(err) {
 
 
 client.once('ready', () => {
-	client.user.setActivity(`${prefix}help`, {type: "playing"}); 
+	client.user.setActivity(`${prefix}help`, {type: "playing"});
 
 	console.log('Ready!');
 });
@@ -63,13 +63,12 @@ function help(message, connection) {
 		.setColor('#00c600')
 		.setTitle('Help')
 		.setAuthor('Eligored', client.user.avatarURL)
-		.setDescription('Some description here')
 		.addFields(
 			{ name: `Help`, value: 'List of all bot commands' },
 			{ name: '\u200B', value: '\u200B' },
-			{ name: `${prefix}help`, value: 'List all commands', inline: true },
-			{ name: `${prefix}ping`, value: 'Returns bot`s latency', inline: true },
-			{ name: `${prefix}list`, value: 'List all registered users', inline: true },
+			{ name: `${prefix}help`, value: 'List all commands' },
+			{ name: `${prefix}ping`, value: 'Returns bot`s latency' },
+			{ name: `${prefix}list`, value: 'List all registered users' },
 		)
 		.setTimestamp()
 		.setFooter(message.author.username, message.author.displayAvatarURL);
