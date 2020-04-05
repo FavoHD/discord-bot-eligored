@@ -51,7 +51,8 @@ client.on('message', async message => {
 	if (!message.content.startsWith(prefix)) return;
 
 	if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
-		message.channel.send('Pong!');
+		const m = await message.channel.send(`Pong!`);
+		m.edit(`Pong! My latency is ${m.createdTimestamp - message.createdTimestamp}ms!`);
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
 		listUsers(message, connection);
@@ -74,6 +75,7 @@ function help(message, connection) {
 			{ name: `Help`, value: 'List of all bot commands' },
 			{ name: '\u200B', value: '\u200B' },
 			{ name: `${prefix}help`, value: 'List all commands', inline: true },
+			{ name: `${prefix}ping`, value: 'Returns bot`s latency', inline: true },
 			{ name: `${prefix}list`, value: 'List all registered users', inline: true },
 		)
 		.setTimestamp()
