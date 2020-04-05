@@ -47,7 +47,7 @@ client.on('message', async message => {
 		message.channel.send('Pong!');
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-
+		help(message, connection);
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}listUsers`)) {
 		listUsers(message, connection);
@@ -56,6 +56,10 @@ client.on('message', async message => {
 		message.channel.send('You need to enter a valid command!')
 	}
 });
+
+function help(message, connection) {
+	message.channel.send("Help");
+}
 
 function listUsers(message, connection) {
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
