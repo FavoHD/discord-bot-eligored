@@ -46,11 +46,11 @@ client.on('message', async message => {
 	if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
 		message.channel.send('Pong!');
 		return;
+	} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
+		listUsers(message, connection);
+		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
 		help(message, connection);
-		return;
-	} else if (message.content.toLowerCase().startsWith(`${prefix}listUsers`)) {
-		listUsers(message, connection);
 		return;
 	} else {
 		message.channel.send('You need to enter a valid command!')
