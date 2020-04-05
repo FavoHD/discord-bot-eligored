@@ -66,7 +66,7 @@ function listUsers(message, connection) {
 
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		results.forEach(user => {
-			string += user.name+" - "+user.email+"\n";
+			string += "\n"+user.name+" - "+user.email;
 		});
 	});
 
