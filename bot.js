@@ -63,7 +63,10 @@ function help(message, connection) {
 
 function listUsers(message, connection) {
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
-		message.channel.send(result);
+		results.forEach((result) => {
+			message.channel.send(result);
+		});
+
 	});
 }
 
