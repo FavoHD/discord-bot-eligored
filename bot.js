@@ -60,7 +60,7 @@ client.on('message', async message => {
 function listUsers() {
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		forEach((result) => {
-			console.console.log(result);
+			console.log(result);
 		});
 
 	});
