@@ -67,6 +67,7 @@ function help(message, connection) {
 			{ name: `Help`, value: 'List of all bot commands' },
 			{ name: '\u200B', value: '\u200B' },
 			{ name: `${prefix}help`, value: 'List all commands', inline: true },
+			{ name: `${prefix}list`, value: 'List all registered users', inline: true },
 		)
 		.setTimestamp()
 		.setFooter(`${client.users.get(message.author.id).username}`, message.author.displayAvatarURL);
