@@ -85,14 +85,15 @@ function listUsers(message, connection) {
 			{ name: 'Userlist', value: 'Lists  all registered users' },
 			{ name: '\u200B', value: '\u200B' },
 		)
+		.setTimestamp()
+		.setFooter(message.author.username, message.author.displayAvatarURL);
+		
 		connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 			results.forEach(user => {
 				embed.addField(`${user.name}`, `${user.email}`)
 			});
 			message.channel.send(string);
 		});
-		.setTimestamp()
-		.setFooter(message.author.username, message.author.displayAvatarURL);
 }
 
 client.login(token);
