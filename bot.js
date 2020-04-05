@@ -68,9 +68,8 @@ function listUsers(message, connection) {
 		results.forEach(user => {
 			string += "\n"+user.name+" - "+user.email;
 		});
+		message.channel.send(string);
 	});
-
-	message.channel.send(string);
 }
 
 client.login(token);
