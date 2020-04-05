@@ -87,12 +87,12 @@ function listUsers(message, connection) {
 		)
 		.setTimestamp()
 		.setFooter(message.author.username, message.author.displayAvatarURL);
-		
+
 		connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 			results.forEach(user => {
 				embed.addField(`${user.name}`, `${user.email}`)
 			});
-			message.channel.send(string);
+			message.channel.send(embed);
 		});
 }
 
