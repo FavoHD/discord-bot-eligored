@@ -7,7 +7,7 @@ const ownerId = process.env.ownerId;
 
 
 //Database
-var mysql      = require('mysql');
+var mysql = require('mysql');
 var connection = mysql.createConnection({
   host     : 'v12018035925062710.yourpserver.net',
   user     : 'db_schulprj_user',
@@ -15,7 +15,14 @@ var connection = mysql.createConnection({
   database : 'DB_SchulPrj'
 });
 
-connection.connect();
+connection.connect(function(err) {
+  if (err) {
+    console.error('error connecting to db: ' + err.stack);
+    return;
+  }
+
+  console.log('connected to db as id ' + connection.threadId);
+});
 //Database
 
 
