@@ -50,14 +50,14 @@ client.on('message', async message => {
 
 		return;
 	} else if (message.content.toLowerCase().startsWith(`${prefix}listUsers`)) {
-		listUsers(message);
+		listUsers(message, connection);
 		return;
 	} else {
 		message.channel.send('You need to enter a valid command!')
 	}
 });
 
-function listUsers(message) {
+function listUsers(message, connection) {
 	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		forEach((result) => {
 			message.channel.send(result);
