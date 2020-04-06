@@ -63,7 +63,17 @@ client.on('message', async message => {
 	if (!message.content.startsWith(prefix)) return;
 
 	console.log(message.guild);
-	if (!message.guild === null) {
+	if (message.guild == null) {
+		if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
+			helpDm(message, connection);
+			return;
+		} else if (message.content.toLowerCase().startsWith(`${prefix}login`)) {
+			login(message, connection);
+			return;
+		} else {
+			message.channel.send('You need to enter a valid command!')
+		}
+	} else {
 		if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
 			const m = await message.channel.send(`Pong!`);
 			m.edit(`Pong! My latency is ${m.createdTimestamp - message.createdTimestamp}ms!`);
@@ -73,16 +83,6 @@ client.on('message', async message => {
 			return;
 		} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
 			listUsers(message, connection);
-			return;
-		} else {
-			message.channel.send('You need to enter a valid command!')
-		}
-	} else {
-		if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-			helpDm(message, connection);
-			return;
-		} else if (message.content.toLowerCase().startsWith(`${prefix}login`)) {
-			login(message, connection);
 			return;
 		} else {
 			message.channel.send('You need to enter a valid command!')
