@@ -135,7 +135,7 @@ function login(message, connection) {
 	const email = args[1];
 	const password = args[2];
 
-	connection.query('SELECT * FROM `Favo_Eligored_users` WHERE `email` ='+email, function (error, results, fields) {
+	connection.query('SELECT * FROM `Favo_Eligored_users`', function (error, results, fields) {
 		console.log("login function: "+results);
 	});
 }
