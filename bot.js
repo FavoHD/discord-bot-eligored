@@ -135,7 +135,7 @@ function login(message, connection) {
 	const email = args[1];
 	const password = args[2];
 
-	var sql_query = "SELECT * FROM Favo_Eligored_users WHERE email = 'hdfavo@gmail.com'";
+	var sql_query = "SELECT * FROM Favo_Eligored_users WHERE email = "+email;
 
 	connection.query(sql_query, function (error, results, fields) {
 		console.log("login function: "+results);
