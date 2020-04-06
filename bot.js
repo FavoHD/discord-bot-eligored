@@ -132,7 +132,7 @@ function listUsers(message, connection) {
 }
 
 function helpDm(message, connection) {
-	console.log("helpDM");
+	message.channel.send("helpDM");
 }
 
 function login(message, connection) {
@@ -148,7 +148,9 @@ function login(message, connection) {
 
 		console.log(password+" "+result[0].password);
 		if(Password.verify(password, result[0].password)){
-			console.log("Correct password");
+			message.channel.send("Correct password");
+		} else {
+			message.channel.send("Incorrect password");
 		}
 	});
 }
