@@ -125,7 +125,10 @@ function helpDM(message, connection) {
 }
 
 function login(message, connection) {
-
+	const args = message.content.split(" ");
+	if((!args[1]) || (!args[2])) {}
+	const email = args[1];
+	const password = args[2];
 }
 
 client.login(token);
