@@ -17,10 +17,9 @@
   },
   "homepage": "https://github.com/FavoHD/discord-bot-eligored#readme",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "discord.js": "^12.0.2",
-    "md5": "^2.2.1",
-    "mysql": "^2.18.1",
-    "password-verify": "0.0.1"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {},
   "description": ""

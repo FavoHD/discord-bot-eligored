@@ -31,7 +31,7 @@ function connect_to_db(connection) {
 }
 //Database
 
-const PasswordVerify = new (require('password-verify'))();
+const bcrypt = require('bcrypt');
 
 
 
@@ -153,7 +153,9 @@ function login(message, connection) {
 		console.log("login function: "+result);
 
 		console.log(password+" "+result[0].password);
-		console.log(PasswordVerify.verifyPassword(password, result[0].password));
+		bcrypt.compare(password, result[0].password, function(err, result) {
+		    console.log(result);
+		});
 	});
 }
 
