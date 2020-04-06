@@ -15,14 +15,20 @@ var connection = mysql.createConnection({
   	database : 'DB_SchulPrj'
 });
 
-connection.connect(function(err) {
-  	if (err) {
-    	console.error('Error while connecting to database: ' + err.stack);
-    	return;
-  	}
+connect_to_db(connection);
+function connect_to_db(connection) {
+	connection.connect(function(err) {
+	  	if (err) {
+	    	console.error('Error while connecting to database: ' + err.stack);
+			setTimeout( () => {
+				connect_to_db(connection);
+			}, 2000);
+	    	return;
+	  	}
 
-  	console.log('Successfully connected to database as ' + connection.threadId);
-});
+	  	console.log('Successfully connected to database as ' + connection.threadId);
+	});
+}
 //Database
 
 const PasswordVerify = new (require('password-verify'))();
@@ -147,7 +153,7 @@ function login(message, connection) {
 		console.log("login function: "+result);
 
 		console.log(password+" "+result[0].password);
-		//console.log(PasswordVerify.verifyPassword(password, result.password));
+		//console.log(PasswordVerify.verifyPassword(password, result[0].password));
 	});
 }
 
