@@ -30,7 +30,7 @@ var Password = require("node-php-password");
 
 
 client.once('ready', () => {
-	client.user.setActivity(`${prefix}help`, {type: "playing"});
+	client.user.setActivity(`${prefix}help`);
 
 	console.log('Ready!');
 });
