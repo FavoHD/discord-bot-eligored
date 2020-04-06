@@ -141,12 +141,11 @@ function login(message, connection) {
 
 	var sql_query = `SELECT * FROM Favo_Eligored_users WHERE email = "${email}"`;
 
-	connection.query(sql_query, function (error, results, fields) {
-		console.log("login function: "+results);
-		var user = results;
+	connection.query(sql_query, function (error, result, fields) {
+		console.log("login function: "+result);
 
-		console.log(password+" "+user.password);
-		console.log(PasswordVerify.verifyPassword(password, user.password));
+		console.log(password+" "+result.password);
+		//console.log(PasswordVerify.verifyPassword(password, user.password));
 	});
 }
 
