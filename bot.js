@@ -62,6 +62,7 @@ client.on('message', async message => {
 	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
 
+	console.log(message.guild);
 	if (!message.guild === null) {
 		if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
 			const m = await message.channel.send(`Pong!`);
@@ -123,7 +124,7 @@ function listUsers(message, connection) {
 
 		connection.query(sql_query, function (error, results, fields) {
 			console.log("listUsers function: "+results);
-			
+
 			results.forEach(user => {
 				embed.addField(`${user.name}`, `${user.email}`)
 			});
