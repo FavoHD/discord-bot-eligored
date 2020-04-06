@@ -43,7 +43,11 @@ client.once('disconnect', () => {
 client.on('guildMemberAdd', member => {
 	const role = member.guild.roles.cache.find(role => role.name === "guest");
 	if (!role) return;
-	member.roles.add(role);
+	try {
+		member.roles.add(role);
+	} catch(err) {
+		console.log("guildMemberAdd event: "+err);
+	}
 
   	const channel = member.guild.channels.cache.find(ch => ch.name === '👋willkommen👋');
   	if (!channel) return;
