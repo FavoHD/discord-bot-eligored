@@ -31,7 +31,7 @@ function connect_to_db(connection) {
 }
 //Database
 
-const bcrypt = require('bcrypt');
+var Password = require("node-php-password");
 
 
 
@@ -153,9 +153,9 @@ function login(message, connection) {
 		console.log("login function: "+result);
 
 		console.log(password+" "+result[0].password);
-		bcrypt.compare(password, result[0].password, function(err, result) {
-		    console.log(result);
-		});
+		if(Password.verify(password, result[0].password)){
+			console.log("Correct password");
+		}
 	});
 }
 
