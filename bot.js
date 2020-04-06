@@ -40,22 +40,45 @@ client.once('disconnect', () => {
 });
 
 
+client.on('guildMemberAdd', member => {
+	const role = member.guild.roles.find(role => role.name === "guest");
+	member.addRole(role);
+
+  	const channel = member.guild.channels.cache.find(ch => ch.name === '👋willkommen👋');
+  	if (!channel) return;
+  	channel.send(`Welcome to the server, ${member}`);
+
+	member.send(`Hier können sie sich in ihren Eligored Profil für den Eligored Discord Server einlogen mit: ${prefix}login <email> <password>`)
+});
+
 client.on('message', async message => {
 	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
 
-	if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
-		const m = await message.channel.send(`Pong!`);
-		m.edit(`Pong! My latency is ${m.createdTimestamp - message.createdTimestamp}ms!`);
-		return;
-	} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
-		listUsers(message, connection);
-		return;
-	} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-		help(message, connection);
-		return;
+	if (!message.guild === null) {
+		if (message.content.toLowerCase().startsWith(`${prefix}ping`)) {
+			const m = await message.channel.send(`Pong!`);
+			m.edit(`Pong! My latency is ${m.createdTimestamp - message.createdTimestamp}ms!`);
+			return;
+		} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
+			listUsers(message, connection);
+			return;
+		} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
+			help(message, connection);
+			return;
+		} else {
+			message.channel.send('You need to enter a valid command!')
+		}
 	} else {
-		message.channel.send('You need to enter a valid command!')
+		if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
+			help(message, connection);
+			return;
+		} else if (message.content.toLowerCase().startsWith(`${prefix}login`)) {
+			login(message, connection);
+			return;
+		} else {
+			message.channel.send('You need to enter a valid command!')
+		}
 	}
 });
 
