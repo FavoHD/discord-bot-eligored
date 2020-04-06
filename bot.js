@@ -149,6 +149,12 @@ function login(message, connection) {
 		console.log(password+" "+result[0].password);
 		if(Password.verify(password, result[0].password)){
 			message.channel.send("Correct password");
+
+			var sql_query = `INSERT INTO Favo_Eligored_user_discord (user_id, discord_id) VALUES ("${result[0].id}", "${message.author.id}");`;
+
+			connection.query(sql_query, function (error, result, fields) {
+				console.log(result);
+			});
 		} else {
 			message.channel.send("Incorrect password");
 		}
