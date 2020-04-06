@@ -144,9 +144,9 @@ function login(message, connection) {
 	connection.query(sql_query, function (error, results, fields) {
 		console.log("login function: "+results);
 		var user = results;
-	});
 
-	console.log(PasswordVerify.verifyPassword(password, user.password));
+		console.log(PasswordVerify.verifyPassword(password, user.password));
+	});
 }
 
 client.login(token);
