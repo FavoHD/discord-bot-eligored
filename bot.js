@@ -60,18 +60,18 @@ client.on('message', async message => {
 			const m = await message.channel.send(`Pong!`);
 			m.edit(`Pong! My latency is ${m.createdTimestamp - message.createdTimestamp}ms!`);
 			return;
+		} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
+			helpGuild(message, connection);
+			return;
 		} else if (message.content.toLowerCase().startsWith(`${prefix}list`)) {
 			listUsers(message, connection);
-			return;
-		} else if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-			help(message, connection);
 			return;
 		} else {
 			message.channel.send('You need to enter a valid command!')
 		}
 	} else {
 		if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
-			help(message, connection);
+			helpDm(message, connection);
 			return;
 		} else if (message.content.toLowerCase().startsWith(`${prefix}login`)) {
 			login(message, connection);
@@ -82,7 +82,7 @@ client.on('message', async message => {
 	}
 });
 
-function help(message, connection) {
+function helpGuild(message, connection) {
 	var embed = new Discord.MessageEmbed()
 		.setColor('#00c600')
 		.setTitle('Help')
@@ -118,6 +118,14 @@ function listUsers(message, connection) {
 			});
 			message.channel.send(embed);
 		});
+}
+
+function helpDM(message, connection) {
+
+}
+
+function login(message, connection) {
+
 }
 
 client.login(token);
