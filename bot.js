@@ -122,7 +122,10 @@ function listUsers(message, connection) {
 		var sql_query = `SELECT * FROM Favo_Eligored_users`;
 
 		connection.query(sql_query, function (error, results, fields) {
-			console.log("listUsers function: "+results);
+			if (error) {
+				console.log("login function: "+error);
+				return;
+			}
 
 			results.forEach(user => {
 				embed.addField(`${user.name}`, `${user.email}`)
@@ -144,16 +147,21 @@ function login(message, connection) {
 	var sql_query = `SELECT * FROM Favo_Eligored_users WHERE email = "${email}"`;
 
 	connection.query(sql_query, function (error, result, fields) {
-		console.log("login function: "+result);
+		if (error) {
+			console.log("login function: "+error);
+			return;
+		}
 
-		console.log(password+" "+result[0].password);
 		if(Password.verify(password, result[0].password)){
 			message.channel.send("Correct password");
 
 			var sql_query = `INSERT INTO Favo_Eligored_user_discord (user_id, discord_id) VALUES ("${result[0].id}", "${message.author.id}");`;
 
 			connection.query(sql_query, function (error, result, fields) {
-				console.log(result);
+				if (error) {
+					console.log("login function: "+error);
+					return;
+				}
 			});
 		} else {
 			message.channel.send("Incorrect password");
