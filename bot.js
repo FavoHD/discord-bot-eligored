@@ -129,6 +129,10 @@ function login(message, connection) {
 	if((!args[1]) || (!args[2])) return;
 	const email = args[1];
 	const password = args[2];
+
+	connection.query('SELECT * FROM `Favo_Eligored_users` WHERE email ='+email, function (error, results, fields) {
+		message.author.send(results);
+	});
 }
 
 client.login(token);
