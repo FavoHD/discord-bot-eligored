@@ -122,6 +122,8 @@ function listUsers(message, connection) {
 		var sql_query = `SELECT * FROM Favo_Eligored_users`;
 
 		connection.query(sql_query, function (error, results, fields) {
+			console.log("listUsers function: "+results);
+			
 			results.forEach(user => {
 				embed.addField(`${user.name}`, `${user.email}`)
 			});
@@ -145,7 +147,7 @@ function login(message, connection) {
 		console.log("login function: "+result);
 
 		console.log(password+" "+result.password);
-		//console.log(PasswordVerify.verifyPassword(password, user.password));
+		//console.log(PasswordVerify.verifyPassword(password, result.password));
 	});
 }
 
