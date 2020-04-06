@@ -152,6 +152,7 @@ function login(message, connection) {
 	connection.query(sql_query, function (error, result, fields) {
 		console.log("login function: "+result);
 
+		console.log(password+" "+result[0].password);
 		console.log(PasswordVerify.verifyPassword(password, result[0].password));
 	});
 }
