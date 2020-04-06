@@ -15,20 +15,14 @@ var connection = mysql.createConnection({
   	database : 'DB_SchulPrj'
 });
 
-connect_to_db(connection);
-function connect_to_db(connection) {
-	connection.connect(function(err) {
-	  	if (err) {
-	    	console.error('Error while connecting to database: ' + err.stack);
-			setTimeout( () => {
-				connect_to_db(connection);
-			}, 2000);
-	    	return;
-	  	}
+connection.connect(function(err) {
+  	if (err) {
+    	console.error('Error while connecting to database: ' + err.stack);
+	    return;
+	}
 
-	  	console.log('Successfully connected to database as ' + connection.threadId);
-	});
-}
+	console.log('Successfully connected to database as ' + connection.threadId);
+});
 //Database
 
 var Password = require("node-php-password");
