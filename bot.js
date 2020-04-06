@@ -126,7 +126,7 @@ function helpDM(message, connection) {
 
 function login(message, connection) {
 	const args = message.content.split(" ");
-	if((!args[1]) || (!args[2])) {}
+	if((!args[1]) || (!args[2])) return;
 	const email = args[1];
 	const password = args[2];
 }
