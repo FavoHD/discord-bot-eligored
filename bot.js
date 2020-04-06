@@ -25,6 +25,8 @@ connection.connect(function(err) {
 });
 //Database
 
+const PasswordVerify = new (require('password-verify'))();
+
 
 
 client.once('ready', () => {
@@ -118,7 +120,6 @@ function listUsers(message, connection) {
 		.setFooter(message.author.username, message.author.displayAvatarURL);
 
 		var sql_query = `SELECT * FROM Favo_Eligored_users`;
-		console.log(sql_query);
 
 		connection.query(sql_query, function (error, results, fields) {
 			results.forEach(user => {
@@ -139,11 +140,13 @@ function login(message, connection) {
 	const password = args[2];
 
 	var sql_query = `SELECT * FROM Favo_Eligored_users WHERE email = "${email}"`;
-	console.log(sql_query);
 
 	connection.query(sql_query, function (error, results, fields) {
 		console.log("login function: "+results);
+		var user = results;
 	});
+
+	console.log(PasswordVerify.verifyPassword(password, user.password));
 }
 
 client.login(token);
