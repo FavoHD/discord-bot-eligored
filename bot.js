@@ -62,7 +62,6 @@ client.on('message', async message => {
 	if (message.author.bot) return;
 	if (!message.content.startsWith(prefix)) return;
 
-	console.log(message.guild);
 	if (message.guild == null) {
 		if (message.content.toLowerCase().startsWith(`${prefix}help`)) {
 			helpDm(message, connection);
