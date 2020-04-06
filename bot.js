@@ -145,6 +145,7 @@ function login(message, connection) {
 		console.log("login function: "+results);
 		var user = results;
 
+		console.log(password+" "+user.password);
 		console.log(PasswordVerify.verifyPassword(password, user.password));
 	});
 }
