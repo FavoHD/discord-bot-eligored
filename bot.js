@@ -133,7 +133,7 @@ function listUsers(message, connection) {
 }
 
 function helpDM(message, connection) {
-
+	console.log("helpDM");
 }
 
 function login(message, connection) {
