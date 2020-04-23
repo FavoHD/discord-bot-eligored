@@ -9,10 +9,10 @@ const ownerId = process.env.ownerId;
 //Database
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  	host     : 'v12018035925062710.yourpserver.net',
-  	user     : 'db_schulprj_user',
-  	password : '20fj%iQ7',
-  	database : 'DB_SchulPrj'
+  	host     : 'process.env.host',
+  	user     : 'process.env.user',
+  	password : 'process.env.password',
+  	database : 'process.env.database'
 });
 
 connection.connect(function(err) {
