@@ -1,18 +1,30 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const prefix = process.env.prefix;
-const token = process.env.token;
-const ownerId = process.env.ownerId;
+try {
+	const {
+		prefix,
+		token,
+		ownerId,
+		host,
+		user,
+		password,
+		database,
+	} = require('./conf.json');
+} catch (e) {}
+
+const prefix = process.env.prefix || prefix;
+const token = process.env.token || token;
+const ownerId = process.env.ownerId || ownerId;
 
 
 //Database
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  	host     : process.env.host,
-  	user     : process.env.user,
-  	password : process.env.password,
-  	database : process.env.database
+  	host     : process.env.host || host,
+  	user     : process.env.user || user,
+  	password : process.env.password || password,
+  	database : process.env.database || database
 });
 
 connection.connect(function(err) {
