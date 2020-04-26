@@ -1,21 +1,13 @@
 {
-  "name": "discord-bot-eligored",
+  "name": "Eligoredbot",
   "version": "1.0.0",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FavoHD/discord-bot-eligored.git"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/FavoHD/discord-bot-eligored/issues"
-  },
-  "homepage": "https://github.com/FavoHD/discord-bot-eligored#readme",
   "dependencies": {
     "discord.js": "^12.0.2",
     "mysql": "^2.18.1",
